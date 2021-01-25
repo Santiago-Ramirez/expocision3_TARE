@@ -1,0 +1,73 @@
+
+<div class="container">
+<h3>Registro heroe</h3>
+    <div class="row">
+        <div class="col-12">
+            <form class="mt-5" #f='ngForm' (ngSubmit)='crear(f)' >
+                <div class="mb-3">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  id="nombre" 
+                  name="nombre"
+                  [(ngModel)]='heroe.nombre'
+                  #nombre='ngModel'
+                  required>
+                </div>
+                <div *ngIf="nombre.errors?.required && nombre.touched" class="alert alert-danger mt-1">
+                    El nombre es necesario
+                </div>
+                <div class="mb-3">
+                  <label for="poder" class="form-label">Poder</label>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  id="poder"
+                  name="poder"
+                  #poder='ngModel'
+                  [(ngModel)]='heroe.poder'
+                  required>
+                </div>
+                <div *ngIf="poder.errors?.required && poder.touched" class="alert alert-danger mt-1">
+                    El poder es necesario
+                </div>
+                <div class="mb-3">
+                  <label class="form-check-label" for="exampleCheck1">Descripcion</label>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  id="descripcion"
+                  name="descripcion"
+                  [(ngModel)]='heroe.descripcion'
+                  #descripcion='ngModel'
+                  required>
+                </div>
+                <div *ngIf="descripcion.errors?.required && descripcion.touched" class="alert alert-danger mt-1">
+                    El descripcion es necesario
+                </div>
+                <button type="text" class="btn btn-primary">Guardar</button>
+              </form>
+        </div>
+        <div class="col-12 mt-5">
+            <h2>Tabla heroes</h2>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Poder</th>
+                    <th scope="col">Descripcion</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let heroe of heroes">
+                    <td>{{heroe.nombre}}</td>
+                    <td>{{heroe.poder}}</td>
+                    <td>{{heroe.descripcion}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+</div>
